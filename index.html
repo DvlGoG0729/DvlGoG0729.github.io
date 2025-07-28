@@ -3,28 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>简单玩玩</title>
+    <title>游戏合集</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     
     <style type="text/tailwindcss">
         @layer utilities {
+            .category-item {
+                @apply bg-gray-50 border border-gray-200 rounded-lg mb-4 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300;
+            }
+            .category-header {
+                @apply flex items-center justify-between p-4 cursor-pointer bg-gray-100 font-medium text-gray-800;
+            }
+            .category-content {
+                @apply p-2 overflow-hidden transition-all duration-300 ease-in-out;
+            }
             .link-style {
-                @apply block py-2 text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200;
+                @apply block py-2 px-4 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded transition-colors duration-200;
+            }
+            .arrow-icon {
+                @apply transition-transform duration-300 ease-in-out;
             }
         }
     </style>
 </head>
-<body class="bg-white min-h-screen flex items-center justify-center p-6">
-    <div class="text-center">
-        <a href="https://dvlgog0729.github.io/xiaoxiao/" target="_blank" class="link-style text-xl">抓捕野生潇潇</a>
-        <a href="https://dvlgog0729.github.io/Furry/" target="_blank" class="link-style text-xl">抓捕野生福瑞</a>
-        <a href="https://dvlgog0729.github.io/BigFurry/" target="_blank" class="link-style text-xl">合成福瑞大王</a>
-        <a href="https://dvlgog0729.github.io/BigXiaoxiao/" target="_blank" class="link-style text-xl">合成潇潇</a>
-        <a href="https://dvlgog0729.github.io/BigLY/" target="_blank" class="link-style text-xl">合成练杨</a>
-        <a href="https://dvlgog0729.github.io/flyFurry/" target="_blank" class="link-style text-xl">福瑞飞飞飞</a>
-        <a href="https://dvlgog0729.github.io/flyFurryBed/" target="_blank" class="link-style text-xl">福瑞跳床</a>
-        <a href="https://dvlgog0729.github.io/flyGoG/" target="_blank" class="link-style text-xl">躲避男鬼</a>
+<body class="bg-gray-50 min-h-screen p-6">
+    <div class="max-w-md mx-auto mt-8">
+        <h1 class="text-2xl font-bold text-center mb-8 text-gray-800">游戏合集</h1>
+        
+        <!-- 魔改别踩白块 -->
+        <div class="category-item">
+            <div class="category-header" onclick="toggleCategory('category1')">
+                <span>魔改别踩白块</span>
+                <i id="arrow1" class="fa fa-caret-right arrow-icon"></i>
+            </div>
+            <div id="category1" class="category-content h-0 opacity-0">
+                <a href="https://dvlgog0729.github.io/xiaoxiao/" target="_blank" class="link-style">抓捕野生潇潇</a>
+                <a href="https://dvlgog0729.github.io/Furry/" target="_blank" class="link-style">抓捕野生福瑞</a>
+            </div>
+        </div>
+        
+        <!-- 魔改合成大西瓜 -->
+        <div class="category-item">
+            <div class="category-header" onclick="toggleCategory('category2')">
+                <span>魔改合成大西瓜</span>
+                <i id="arrow2" class="fa fa-caret-right arrow-icon"></i>
+            </div>
+            <div id="category2" class="category-content h-0 opacity-0">
+                <a href="https://dvlgog0729.github.io/BigFurry/" target="_blank" class="link-style">合成福瑞大王</a>
+                <a href="https://dvlgog0729.github.io/BigLY/" target="_blank" class="link-style">合成练杨</a>
+                <a href="https://dvlgog0729.github.io/BigXiaoxiao/" target="_blank" class="link-style">合成潇潇</a>
+            </div>
+        </div>
+        
+        <!-- 魔改自小鸟管道 -->
+        <div class="category-item">
+            <div class="category-header" onclick="toggleCategory('category3')">
+                <span>魔改自小鸟管道</span>
+                <i id="arrow3" class="fa fa-caret-right arrow-icon"></i>
+            </div>
+            <div id="category3" class="category-content h-0 opacity-0">
+                <a href="https://dvlgog0729.github.io/flyFurry/" target="_blank" class="link-style">福瑞飞飞飞</a>
+                <a href="https://dvlgog0729.github.io/flyFurryBed/" target="_blank" class="link-style">福瑞跳床</a>
+                <a href="https://dvlgog0729.github.io/flyGoG/" target="_blank" class="link-style">躲避男鬼</a>
+            </div>
+        </div>
     </div>
+
+    <script>
+        // 切换分类展开/折叠状态
+        function toggleCategory(categoryId) {
+            const category = document.getElementById(categoryId);
+            const arrowId = 'arrow' + categoryId.replace('category', '');
+            const arrow = document.getElementById(arrowId);
+            
+            // 计算内容高度
+            if (category.style.height === '0px' || !category.style.height) {
+                // 展开
+                category.style.height = category.scrollHeight + 'px';
+                category.style.opacity = '1';
+                arrow.style.transform = 'rotate(90deg)';
+            } else {
+                // 折叠
+                category.style.height = '0px';
+                category.style.opacity = '0';
+                arrow.style.transform = 'rotate(0)';
+            }
+        }
+    </script>
 </body>
 </html>
-    
